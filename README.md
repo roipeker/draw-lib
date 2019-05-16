@@ -9,7 +9,7 @@ The code in this repo contains a *IntellijIdea* project with 2 projects modules:
 * draw_demos 
 * draw_lib
 
-You can get a precompiled binary for Draw inside _/draw_lib/bin/draw_lib.swc_, but the Intellij project uses Build Configurations dependencies to run the samples.
+You can get a precompiled binary for Draw inside [_/draw_lib/bin-release/draw_lib.swc_](https://github.com/roipeker/draw-lib/tree/master/draw_lib/bin-release/draw_lib.swc), but the Intellij project uses Build Configurations dependencies to run the samples.
 
 ### Prerequisites
 

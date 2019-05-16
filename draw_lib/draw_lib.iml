@@ -2,7 +2,7 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="draw_lib">
     <configurations>
-      <configuration name="draw_lib" target-platform="Desktop" pure-as="true" output-type="Library" output-file="draw_lib.swc" output-folder="$MODULE_DIR$/bin">
+      <configuration name="draw_lib" target-platform="Desktop" pure-as="true" output-type="Library" output-file="draw_lib.swc" output-folder="$MODULE_DIR$/bin-release">
         <dependencies target-player="32.0">
           <entries>
             <entry library-id="7dc22fce-ca0f-4a92-a551-9b706047bef1">
