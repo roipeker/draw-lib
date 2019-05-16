@@ -19,14 +19,17 @@ public class StarlingRoot extends Sprite {
     }
 
     private function onAddedToStage(event:Event):void {
-//        addChild(new DemoPixiSimple());
+
+        // just uncomment 1 line at a time to test.
+
+        addChild(new DemoPixiSimple());
 //        addChild(new DemoPixiAdvanced());
 //        addChild(new DemoPixiDynamic());
 //        addChild(new DemoAnimatedArc());
 //        addChild(new DemoDashedLine());
 //        addChild(new DemoCloneInstances());
 //        addChild(new DemoHoles());
-        addChild(new DemoSVG());
+//        addChild(new DemoSVG());
 //        addChild(new DemoPieChart());
 //        addChild(new DemoGraphicsData());
 //        addChild(new DemoLineStyles());
