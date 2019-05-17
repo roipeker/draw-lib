@@ -32,7 +32,7 @@ I didn't have the time to write documentation (or code comments), but 90% of the
 ![demo 8](../media/images/demo8.png?raw=true)
 ![demo 9](../media/images/demo9.gif?raw=true)
 ![demo 10](../media/images/demo10.gif?raw=true)
-![demo 11](../media/images/demo11.gif?raw=true)
+![demo 11](../media/images/demo11.png?raw=true)
 
 
 ## Contributing
