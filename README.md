@@ -15,11 +15,24 @@ You can get a precompiled binary for Draw inside [_/draw_lib/bin-release/draw_li
 
 Intellij and some version of [AdobeSDK](https://www.adobe.com/devnet/air/air-sdk-download.html) compatible with Starling v2.5.1
 
-### API and some demos.
+### API and demos.
 
 Considere the API very similar to the AS3 Graphics one. 
 
 I didn't have the time to write documentation (or code comments), but 90% of the code was ported from PixiJS, so check their [docs](http://pixijs.download/dev/docs/PIXI.Graphics.html).
+
+## demos screenshots
+
+![demo 1](../media/images/demo1.png?raw=true)
+![demo 2](../media/images/demo2.png?raw=true)
+![demo 3](../media/images/demo3.gif?raw=true)
+![demo 4](../media/images/demo4.gif?raw=true)
+![demo 5](../media/images/demo5.gif?raw=true)
+![demo 7](../media/images/demo7.png?raw=true)
+![demo 8](../media/images/demo8.png?raw=true)
+![demo 9](../media/images/demo9.gif?raw=true)
+![demo 10](../media/images/demo10.gif?raw=true)
+![demo 11](../media/images/demo11.gif?raw=true)
 
 
 ## Contributing
