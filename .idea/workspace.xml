@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/libs" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1bcd0bc2-754d-4424-a87d-22aa8527642b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/draw_lib/bin-release/draw_lib.swc" beforeDir="false" afterPath="$PROJECT_DIR$/draw_lib/bin-release/draw_lib.swc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StarlingRoot.as" beforeDir="false" afterPath="$PROJECT_DIR$/src/StarlingRoot.as" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/demos/DemoPixiDynamic.as" beforeDir="false" afterPath="$PROJECT_DIR$/src/demos/DemoPixiDynamic.as" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/demos/DemoDashedLine.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="e#280#319#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/StarlingRoot.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#274#289#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Boot.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="15" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="15" />
+              <folding>
+                <element signature="e#11#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/demos/DemoAnimatedArc.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1695">
+              <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
+              <folding>
+                <element signature="e#280#319#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/demos/DemoPixiDynamic.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1185">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
+              <folding>
+                <element signature="e#280#319#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="ActionScript Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>svgPath</find>
+      <find>_matrix</find>
+      <find>transformChild</find>
+      <find>_ct</find>
+      <find>curve</find>
+      <find>tr</find>
+      <find>segment coun</find>
+      <find />
+      <find>cubicCurveTo</find>
+      <find>startAngle</find>
+      <find>child</find>
+      <find>ninja2</find>
+      <find>line</find>
+      <find>createTriangles2</find>
+      <find>anchor</find>
+      <find>midPointX</find>
+      <find>=</find>
+      <find>let</find>
+      <find>minSegmentPixels</find>
+      <find>PI_2</find>
+      <find>nxtPx</find>
+      <find>verts</find>
+      <find>lineCap</find>
+      <find>buildLineComplex</find>
+      <find>s_p1an</find>
+      <find>pintersect</find>
+      <find>trace</find>
+      <find>indexStart</find>
+      <find>j</find>
+      <find>version</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>gradient</replace>
+      <replace>Draw</replace>
+      <replace>addChild(</replace>
+      <replace>/</replace>
+      <replace>:Number =</replace>
+      <replace>,</replace>
+      <replace>var</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/lib-src/com/roipeker/</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/styles/FillStyle.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/builders/AbsShapeBuilder.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/math/shapes/Ellipse.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/builders/RoundRectBuilder.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/earcut/Earcut2.as" />
+        <option value="$PROJECT_DIR$/src/PixiDemos.as" />
+        <option value="$PROJECT_DIR$/src/PixiDemoSimple.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/math/shapes/StarPoly.as" />
+        <option value="$PROJECT_DIR$/src/demos/PixiDemoSimple.as" />
+        <option value="$PROJECT_DIR$/src/demos/PixiDemoAdvanced.as" />
+        <option value="$PROJECT_DIR$/src/demos/PixiDemoDynamic.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/math/shapes/Poly.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/builders/PolyBuilder.as" />
+        <option value="$PROJECT_DIR$/my-libs/src/starling/animation/Tween.as" />
+        <option value="$PROJECT_DIR$/src/demos/DemoDashedLine.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/builders/CircleBuilder.as" />
+        <option value="$PROJECT_DIR$/src/demos/DemoHoles.as" />
+        <option value="$PROJECT_DIR$/src/demos/DemoCloneInstances.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/math/shapes/MeshShape.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/builders/MeshBuilder.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/svg/SVGColor.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/svg/GraphSVG.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/svg/DPathParser.as" />
+        <option value="$PROJECT_DIR$/src/demos/svg_samples.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/svg/SVGDraw.as" />
+        <option value="$PROJECT_DIR$/src/demos/DemoPieChart.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/builders/GraphicsDataBuild.as" />
+        <option value="$PROJECT_DIR$/src/demos/DemoGraphicsData.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/earcut/Earcut.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/ArcUtils.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/BezierUtils.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/GraphicCurves.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/QuadraticUtils.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/GraphData.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/GraphGeom.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/lines/Pnt.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/lines/Liner2.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/lines/LinerUtil.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/lines/LineStrokePixi.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/lines/ComplexLineStroke.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/GraphUtils.as" />
+        <option value="$PROJECT_DIR$/src/demos/DemoLineStyles.as" />
+        <option value="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/Draw.as" />
+        <option value="$PROJECT_DIR$/app.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/demos/DemoPixiDynamic.as" />
+        <option value="$PROJECT_DIR$/src/demos/DemoAnimatedArc.as" />
+        <option value="$PROJECT_DIR$/src/demos/DemoSVG.as" />
+        <option value="$PROJECT_DIR$/src/Boot.as" />
+        <option value="$PROJECT_DIR$/src/StarlingRoot.as" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-2007" />
+    <option name="y" value="-229" />
+    <option name="width" value="2048" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="draw-lib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="draw-lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="draw-lib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="draw-lib" type="462c0819:PsiDirectoryNode" />
+              <item name="draw_lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="draw-lib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="draw-lib" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15208334" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/demos" />
+    </key>
+    <key name="CreateActionScriptClassDialog.DESTINATION_PACKAGE_RECENT_KEY">
+      <recent name="com.roipeker.starling.draw.utils.lines" />
+      <recent name="demos" />
+      <recent name="com.roipeker.starling.draw.builders" />
+      <recent name="" />
+      <recent name="com.roipeker.starling.draw.utils.earcut" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/demos" />
+      <recent name="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/svg" />
+      <recent name="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils" />
+      <recent name="$PROJECT_DIR$/lib-src/com/roipeker/starling/draw" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="desktop test" type="FlashRunConfigurationType">
+      <option name="BCName" value="desktop" />
+      <option name="IOSSimulatorDevice" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="clearAppDataOnEachLaunch" value="true" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="draw demos" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1bcd0bc2-754d-4424-a87d-22aa8527642b" name="Default Changelist" comment="" />
+      <created>1557606877767</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557606877767</updated>
+      <workItem from="1557606879035" duration="16032000" />
+      <workItem from="1557776023542" duration="598000" />
+      <workItem from="1557920517121" duration="56726000" />
+      <workItem from="1558048701528" duration="23000" />
+      <workItem from="1558048906171" duration="5000" />
+      <workItem from="1558049001656" duration="2554000" />
+      <workItem from="1558053115913" duration="453000" />
+      <workItem from="1558053646457" duration="1232000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="77623000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-2007" y="-229" width="2048" height="1056" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13908274" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32741618" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32624868" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3678501" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32624868" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="Flutter Performance" order="13" side_tool="true" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Flutter Inspector" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Flutter Outline" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Downloads/pTon4pnTE.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demos/svg_samples.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="1056" column="34" selection-start-line="1056" selection-start-column="24" selection-end-line="1056" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/svg/SVGDraw.as" />
+    <entry file="file://$PROJECT_DIR$/my-libs/src/starling/animation/Transitions.as" />
+    <entry file="file://$PROJECT_DIR$/my-libs/src/starling/animation/Tween.as" />
+    <entry file="file://$PROJECT_DIR$/my-libs/src/starling/text/BitmapFont.as" />
+    <entry file="file://$PROJECT_DIR$/src/demos/DemoPieChart.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+          <folding>
+            <element signature="e#280#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my-libs/src/starling/animation/Juggler.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/builders/GraphicsDataBuild.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/earcut/Earcut.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/earcut/Node.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/ArcUtils.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/svg/SVGColor.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/svg/DPathParser.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/QuadraticUtils.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/builders/AbsShapeBuilder.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/AbsMesh.as" />
+    <entry file="jar://$PROJECT_DIR$/../../../sdks/air/air_sdk_32.0.0.83/frameworks/libs/air/airglobal.swc!/library.swf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="10800" column="29" selection-start-line="10800" selection-start-column="29" selection-end-line="10800" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/GraphicCurves.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/BezierUtils.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/builders/CircleBuilder.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/GraphData.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/styles/LineStyle.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/GraphGeom.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/lines/Pnt.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/math/shapes/AbsShape.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/lines/LineStrokePixi.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/lines/ComplexLineStroke.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/utils/GraphUtils.as" />
+    <entry file="file://$PROJECT_DIR$/lib-src/com/roipeker/starling/draw/Draw.as" />
+    <entry file="file://$USER_HOME$/Library/Caches/IntelliJIdea2019.1/compile-server/starling_draw_7d95ebb6/_temp_/IntelliJ_IDEA/idea-C6D2336-E3737488.xml" />
+    <entry file="file://$PROJECT_DIR$/draw_lib/src/com/roipeker/starling/draw/Draw.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demos/DemoPixiSimple.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+          <folding>
+            <element signature="e#280#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/draw_lib/src/com/roipeker/starling/draw/svg/SVGDraw.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demos/DemoCloneInstances.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="e#280#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/starling.swc!/library.swf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="1586" column="52" selection-start-line="1586" selection-start-column="47" selection-end-line="1586" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="65" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="240">
+            <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../android-ane-utils/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="30">
+            <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demos/DemoLineStyles.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#280#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demos/DemoPixiAdvanced.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="86" column="39" selection-start-line="86" selection-start-column="39" selection-end-line="86" selection-end-column="39" />
+          <folding>
+            <element signature="e#280#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demos/DemoHoles.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#280#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demos/DemoGraphicsData.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="e#280#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demos/DemoDashedLine.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#280#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demos/DemoAnimatedArc.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1695">
+          <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
+          <folding>
+            <element signature="e#280#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demos/DemoPixiDynamic.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="e#280#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demos/DemoSVG.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="45" column="50" lean-forward="true" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
+          <folding>
+            <element signature="e#280#326#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Boot.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="15" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="15" />
+          <folding>
+            <element signature="e#11#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StarlingRoot.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#274#289#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>@types/gsap</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>flex 3.3.2</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>draw_lib|draw_lib</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>air_sdk</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
