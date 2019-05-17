@@ -1,7 +1,21 @@
-# Draw lib (for StarlingFW)
+# draw-lib
 
 Draw tries to mimic [AS3 Graphics API](https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/Graphics.html) but is powered by [Starling](https://gamua.com/starling/). Was heavily ported from the Graphics implementation in PixiJS.
 And, although I do not recommend it for production use, the code wasn't tested enough and is unoptimized, it seems to work fine for simple vector shapes in my testings.
+
+-------------
+
+Support **draw-lib** via [Paypal](https://www.paypal.me/roipeker/)
+
+[![Donate via PayPal](https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg)](https://www.paypal.me/roipeker/)
+
+
+
+##### IDE Software provided by JetBrains
+[![Jetbrains](https://raw.githubusercontent.com/tuarua/WebViewANE/master/screenshots/jetbrains.png)](https://www.jetbrains.com)
+
+-------------
+
 
 ## Getting Started
 
