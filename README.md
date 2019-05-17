@@ -5,6 +5,7 @@ And, although I do not recommend it for production use, the code wasn't tested e
 
 -------------
 
+#### Donation
 Support **draw-lib** via [Paypal](https://www.paypal.me/roipeker/)
 
 [![Donate via PayPal](https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg)](https://www.paypal.me/roipeker/)
@@ -51,7 +52,10 @@ I didn't have the time to write documentation (or code comments), but 90% of the
 
 ## Contributing
 
-Please, that's the point of why I setup this repo :)
+That's why I setup this repo! So, use pull request. 
+
+You can also [buy me a coffee](https://www.paypal.me/roipeker/).
+
 
 ## Authors
 
