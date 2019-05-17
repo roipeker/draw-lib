@@ -59,7 +59,7 @@ You can also [buy me a coffee](https://www.paypal.me/roipeker/).
 
 ## Authors
 
-* **Rodrigo Lopez** - *Initial work* - [roipeker](https://roipeker.com/https://github.com/roipeker)
+* **Rodrigo Lopez** - *Initial work* - [roipeker](https://github.com/roipeker)
 
 ## Acknowledgments
 
