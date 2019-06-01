@@ -14,8 +14,11 @@ import flash.display.JointStyle;
 import flash.geom.Matrix;
 
 import starling.utils.StringUtil;
+import starling.utils.deg2rad;
 
 public class SVGDraw extends Draw {
+
+    public var verbose:Boolean = false;
 
     public function SVGDraw() {
         super();
@@ -39,10 +42,10 @@ public class SVGDraw extends Draw {
 
     public function parse(xml:XML):void {
         xml = clearXML(xml);
+        _log(xml.toXMLString());
         if ('@holeFill' in xml) {
             holeColor = parseHex(xml.@holeFill.toString());
         }
-
         if ('@enable-background' in xml) {
             beginFill(0x0, 1);
         }
@@ -51,18 +54,31 @@ public class SVGDraw extends Draw {
 
     public var applyTransforms:Boolean = true;
 
+    private function svgDefs(node:XML):void {
+        // do something.
+    }
+
     private function svgChildren(list:XMLList, inherit:Boolean = false, transform:Object = null):void {
         var len:int = list.length();
         for (var i:int = 0; i < len; i++) {
+
             var child:XML = list[i];
-            fill(child, inherit);
-            // analyze transform nodes.
             var nodeName:String = child.name().toString().toLowerCase();
-//            trace("Child is", nodeName);
+            _log("Child node name...", nodeName);
+
+            if (nodeName == 'defs') {
+                _log('analyze this def:', child);
+                svgDefs(child);
+                continue;
+            }
+
+            fill(child, inherit);
+
+            _matrix = null;
             if (applyTransforms) {
                 analyzeTransform(child);
             }
-            trace(nodeName);
+//            _log(nodeName);
             if (_buildMap[nodeName]) {
                 _buildMap[nodeName](child);
             }
@@ -78,12 +94,22 @@ public class SVGDraw extends Draw {
             if (_ct) {
                 _matrix = new Matrix();
                 var arr:Array;
+                _log('transformat?!', _ct.rotate);
                 if (arr = _ct.translate) {
                     _matrix.translate(arr[0], arr[1]);
                 }
-
                 if (arr = _ct.scale) {
                     _matrix.scale(arr[0], arr[1]);
+                }
+                if (arr = _ct.rotate) {
+                    const angle:Number = deg2rad(arr[0]);
+                    if (arr.length > 1) {
+                        _matrix.translate(-arr[1], -arr[2]);
+                        _matrix.rotate(angle);
+                        _matrix.translate(arr[1], arr[2]);
+                    } else {
+                        _matrix.rotate(angle);
+                    }
                 }
             }
         }
@@ -114,16 +140,16 @@ public class SVGDraw extends Draw {
 
     private function svgPath(node:XML):void {
         var d:String = node.@d.toString();
-//        trace("Generate map! >> ", d );
+//        _log("Generate map! >> ", d );
         var x:Number = 0, y:Number = 0;
         var commands:Array = dPathParse(d);
         var currX:Number, currY:Number;
 
-        var lastCP:Object = {x:0,y:0};
+        var lastCP:Object = {x: 0, y: 0};
 
         for (var i:int = 0, len:uint = commands.length; i < len; i++) {
             var command:Object = commands[i];
-//            trace("Command code:", command.code);
+//            _log("Command code:", command.code);
             // parse command function?!
             // debuggin.
             var tr:String = command.code;
@@ -135,7 +161,7 @@ public class SVGDraw extends Draw {
 
                     x += command.end.x;
                     y += command.end.y;
-                    trace('move', x, y);
+                    _log('move', x, y);
                     this.moveTo(x, y);
                     break;
                 }
@@ -145,7 +171,7 @@ public class SVGDraw extends Draw {
 
                     x = command.end.x;
                     y = command.end.y;
-                    trace('MOVE', x, y);
+                    _log('MOVE', x, y);
                     this.moveTo(x, y);
                     break;
                 }
@@ -154,7 +180,7 @@ public class SVGDraw extends Draw {
                     repl = [command.value];
 
                     x = command.value;
-                    trace('LINE', x, y);
+                    _log('LINE', x, y);
                     this.lineTo(x, y);
                     break;
                 }
@@ -163,7 +189,7 @@ public class SVGDraw extends Draw {
                     repl = [command.value];
 
                     x += command.value;
-                    trace('line', x, y);
+                    _log('line', x, y);
                     this.lineTo(x, y);
                     break;
                 }
@@ -172,7 +198,7 @@ public class SVGDraw extends Draw {
                     repl = [command.value];
 
                     y = command.value;
-                    trace('LINE', x, y);
+                    _log('LINE', x, y);
                     this.lineTo(x, y);
                     break;
                 }
@@ -181,7 +207,7 @@ public class SVGDraw extends Draw {
                     repl = [command.value];
 
                     y += command.value;
-                    trace('line', x, y);
+                    _log('line', x, y);
                     this.lineTo(x, y);
                     break;
                 }
@@ -194,6 +220,7 @@ public class SVGDraw extends Draw {
                     tr += ' close';
                     this.closePath();
                     if (_holeMode) {
+                        trace("End the hole!");
                         endHole();
                     }
                     if (_ct) {
@@ -226,7 +253,6 @@ public class SVGDraw extends Draw {
 
 //                case 'S':
                 case 'C': {
-
                     tr += ' cubicCurve {0}, {1} / {2}, {3} / {4}, {5}';
                     repl = [command.cp1.x, command.cp1.y,
                         command.cp2.x, command.cp2.y,
@@ -248,26 +274,26 @@ public class SVGDraw extends Draw {
                 }
 
 
-                // TODO: fix 's' as described in https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
-                /*case 's': {
-                    tr += ' s_cubicCurve ++ {0}, {1} / {2}, {3} / {4}, {5}';
-//                    end":{"x":256,"y":-256},"relative":true,"cp":{"x":114.621094,"y":-256}}
+                    // TODO: fix 's' as described in https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+                    /*case 's': {
+                        tr += ' s_cubicCurve ++ {0}, {1} / {2}, {3} / {4}, {5}';
+    //                    end":{"x":256,"y":-256},"relative":true,"cp":{"x":114.621094,"y":-256}}
 
-                    repl = [
-                        -lastCP.x, -lastCP.y,
-                        command.cp.x, command.cp.y,
-                        command.end.x, command.end.y];
-                    currX = x;
-                    currY = y;
-                    x += command.end.x;
-                    y += command.end.y;
-                    this.cubicCurveTo(
+                        repl = [
                             -lastCP.x, -lastCP.y,
                             command.cp.x, command.cp.y,
-                            x, y
-                    );
-                    break ;
-                }*/
+                            command.end.x, command.end.y];
+                        currX = x;
+                        currY = y;
+                        x += command.end.x;
+                        y += command.end.y;
+                        this.cubicCurveTo(
+                                -lastCP.x, -lastCP.y,
+                                command.cp.x, command.cp.y,
+                                x, y
+                        );
+                        break ;
+                    }*/
                 case 'c': {
                     tr += ' cubicCurve ++ {0}, {1} / {2}, {3} / {4}, {5}';
                     repl = [command.cp1.x, command.cp1.y,
@@ -326,7 +352,7 @@ public class SVGDraw extends Draw {
                 }
                 default: {
                     // @if DEBUG
-                    trace('[SVGUtils] Draw command not supported:', command.code);
+                    _log('[SVGUtils] Draw command not supported:', command.code);
 //                    console.info('[SVGUtils] Draw command not supported:', command.code, command);
                     // @endif
                     break;
@@ -336,7 +362,7 @@ public class SVGDraw extends Draw {
             if (tr) {
                 repl.unshift(tr);
                 tr = StringUtil.format.apply(null, repl);
-                trace("SVG " + tr);
+                _log("SVG " + tr);
             }
         }
     }
@@ -370,10 +396,11 @@ public class SVGDraw extends Draw {
 
     private function svgRect(node:XML):void {
         var rx:Number = '@rx' in node ? parseFloat(node.@rx) : 0;
-        var x:Number = parseFloat(node.@x);
-        var y:Number = parseFloat(node.@y);
-        var w:Number = parseFloat(node.@width);
-        var h:Number = parseFloat(node.@height);
+        var x:Number = parseFloat(node.@x) || 0;
+        var y:Number = parseFloat(node.@y) || 0;
+        var w:Number = parseFloat(node.@width) || 0;
+        var h:Number = parseFloat(node.@height) || 0;
+        if (w == 0 || h == 0) return;
         if (rx > 0) {
             drawRoundRect(x, y, w, h, rx);
         } else {
@@ -383,11 +410,24 @@ public class SVGDraw extends Draw {
 
 
     private function svgLine(node:XML):void {
-        trace(node.toXMLString());
+        _log("drawing line:", node.toXMLString());
+        if ('@x1' in node) {
+//        var points:Array;
+            /*points = [
+                parseFloat(node.@x1), parseFloat(node.@y1),
+                parseFloat(node.@x2), parseFloat(node.@y2)
+            ];*/
+//            const lineW:Number = '@stroke-width' in node ? parseFloat(node['@stroke-width']) : 1;
+//            const opacity:Number = '@stroke-opacity' in node ? parseFloat(node['@stroke-opacity']) : 1;
+//            const color:uint = '@stroke' in node ? parseHex(node.@stroke) : 0x0;
+//            lineStyle(lineW, color, opacity);
+            moveTo(parseFloat(node.@x1), parseFloat(node.@y1));
+            lineTo(parseFloat(node.@x2), parseFloat(node.@y2));
+        }
     }
 
     private function svgPolygon(node:XML):void {
-        trace("SVG POLY:", node.toXMLString());
+        _log("SVG POLY:", node.toXMLString());
         svgPoly(node, true);
     }
 
@@ -404,9 +444,7 @@ public class SVGDraw extends Draw {
 
     private function fill(node:XML, inherit:Boolean = false):void {
         var props:Object = svgStyle(node);
-
         if (!props) return;
-
 
         // todo: make fill inherit.
         var defaultLineW:Number = 'stroke' in props ? 1 : 0;
@@ -414,28 +452,40 @@ public class SVGDraw extends Draw {
             defaultLineW = 0;
         }
 
-        trace("Fill style:", node.toXMLString(), JSON.stringify(props));
+        _log("Fill style:", node.toXMLString(), JSON.stringify(props));
 //        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-CapsStyle="square">
 
-        var opacity:Number = 'opacity' in props ? parseFloat(props.opacity) : 1;
+        var opacity:Number = 1;
+        if ('opacity' in props) {
+            opacity = parseFloat(props.opacity)
+        } else if ('fill-opacity' in props) {
+            opacity = parseFloat(props['fill-opacity']);
+            _log("Fill opacivity!!!!", opacity);
+        }
         var fill:String = props.fill;
-        var lineW:Number = 'strokeWidth' in props ? parseFloat(props.strokeWidth) : defaultLineW;
-        var lineColor:Number = 'stroke' in props ? parseHex(props.stroke) : _lineStyle.color;
-        var caps:String = 'stroke-linecap' in props ? props['stroke-linecap'] : CapsStyle.SQUARE;
 
+//        var lineW:Number = 'strokeWidth' in props ? parseFloat(props.strokeWidth) : defaultLineW;
+        var lineColor:Number = 'stroke' in props ? parseHex(props.stroke) : _lineStyle.color;
+        var lineW:Number = 'stroke-width' in props ? parseFloat(props['stroke-width']) : defaultLineW;
+        var lineCap:String = 'stroke-linecap' in props ? props['stroke-linecap'] : CapsStyle.SQUARE;
+        var lineJoin:String = 'stroke-linejoin' in props ? props['stroke-linejoin'] : JointStyle.MITER;
+        var lineOpacity:Number = 'stroke-opacity' in props ? parseFloat(props['stroke-opacity']) : 1;
+        var isLineVisible:Boolean = lineW > 0 && lineOpacity > 0;
+
+//        trace("Hola color is", holeColor.toString(16));
         if (fill) {
-            trace("Fill is:", fill);
+            _log("Fill is:", fill, opacity);
             if (fill == 'none') {
                 beginFill(0, 0);
             } else {
                 var fillColor:uint = parseHex(fill);
                 beginFill(fillColor, opacity);
-                if (fillColor == holeColor) {
+                /*if (fillColor == holeColor) {
 
-                }
+                }*/
             }
         } else if (!inherit) {
-            beginFill(0);
+            beginFill(0x0, 0);
         }
 
         if (_fillStyle.visible) {
@@ -445,7 +495,16 @@ public class SVGDraw extends Draw {
                 }
             }
         }
-        lineStyle(lineW, lineColor, 1, .5, JointStyle.MITER, caps);
+
+        // Not sure about this change... to "remove" a lineStyle.
+//        trace("So line cap, join?", lineJoin, lineCap, lineW, lineColor, lineOpacity);
+        if ( isLineVisible ) {
+            lineStyle( lineW, lineColor, lineOpacity, .5, lineJoin, lineCap);
+        }
+        /*else if ( _lineStyle.visible && !isLineVisible) {
+            lineStyle(lineW, lineColor, lineOpacity);
+            trace('line INvisible!');
+        }*/
         // line join, cap, fill-rule NOT supported!.
     }
 
@@ -458,8 +517,12 @@ public class SVGDraw extends Draw {
 
         addProp('fill');
         addProp('opacity');
+        addProp('fill-opacity');
         addProp('stroke');
         addProp('stroke-width');
+        addProp('stroke-linecap');
+        addProp('stroke-linejoin');
+        addProp('stroke-opacity');
 
         function addProp(prop:String):void {
             var key:String = '@' + prop;
@@ -475,18 +538,17 @@ public class SVGDraw extends Draw {
                 hasStyleData = true;
                 var keys:Array = p.split(':');
                 result[trim(keys[0])] = trim(keys[1]);
-//                trace('keys', keys);
+//                _log('keys', keys);
             }
         }
 
-        if (result['stroke-width']) {
+        /*if (result['stroke-width']) {
             hasStyleData = true;
-            // replace.
             result.strokeWidth = result['stroke-width'];
             delete result['stroke-width'];
-        }
+        }*/
         if (!hasStyleData) return null;
-//        trace("JSON", JSON.stringify(result));
+//        _log("JSON", JSON.stringify(result));
         return result;
     }
 
@@ -501,13 +563,13 @@ public class SVGDraw extends Draw {
         return SVGColor.resolveHex(strColor);
         /*if (strColor.charAt(0) == '#') {
             strColor = strColor.substr(1);
-//            trace("Str color", strColor);
+//            _log("Str color", strColor);
             if (strColor.length == 3) {
                 strColor = strColor.replace(/([a-f0-9])/ig, '$1$1');
             }
             return parseInt(strColor, 16);
         } else {
-            trace('color not supported!');
+            _log('color not supported!');
             return 0x00ff00;
         }*/
     }
@@ -527,9 +589,13 @@ public class SVGDraw extends Draw {
             if (myXmlStr.indexOf(removeAttrs[i]) >= 1)
                 myXmlStr = myXmlStr.split(removeAttrs[i]).join("");
         }
-
-        trace(myXmlStr);
         return new XML(myXmlStr);
+    }
+
+    private function _log(...args):void {
+        if (!verbose || !args.length) return;
+        var msg:String = '[Draw] ' + args.join(" ");
+        trace(msg);
     }
 }
 }

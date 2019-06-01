@@ -30,20 +30,28 @@ import flash.display.IGraphicsData;
 import flash.display.JointStyle;
 import flash.geom.Matrix;
 import flash.geom.Point;
+import flash.geom.Rectangle;
 import flash.utils.ByteArray;
 import flash.utils.Dictionary;
+import flash.utils.getTimer;
 
 import starling.core.Starling;
+import starling.display.DisplayObjectContainer;
+import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Event;
+import starling.filters.FragmentFilter;
 import starling.rendering.IndexData;
 import starling.rendering.VertexData;
+import starling.textures.RenderTexture;
 import starling.textures.Texture;
+import starling.textures.TextureSmoothing;
 import starling.utils.MathUtil;
+import starling.utils.Padding;
 
 public class Draw extends Sprite {
 
-    public static const VERSION:String = '1.0.0';
+    public static const VERSION:String = '1.0.1';
 
     private var _mesh:AbsMesh;
     private var _geom:GraphGeom;
@@ -61,6 +69,37 @@ public class Draw extends Sprite {
 
     // uses Juggler invalidation to delay all calls.
     public var useInvalidation:Boolean;
+
+    private var _cacheAsBitmap:Boolean = false;
+    private var _cacheFilter:FragmentFilter;
+
+    public function set cacheAsBitmap(flag:Boolean):void {
+        if (_cacheAsBitmap == flag) return;
+        _cacheAsBitmap = flag;
+        if (_cacheAsBitmap) {
+            if (_invalidating) {
+                validate();
+            }
+            if (!_cacheFilter) {
+                _cacheFilter = new FragmentFilter();
+                _cacheFilter.resolution = .4;
+//                _cacheFilter.alwaysDrawToBackBuffer = true ;
+//                _cacheFilter.antiAliasing = 4;
+                _cacheFilter.textureSmoothing = TextureSmoothing.TRILINEAR;
+            }
+            _mesh.filter = _cacheFilter;
+//            _cacheFilter.cache();
+        } else {
+            if( _cacheFilter ) {
+                _cacheFilter.clearCache();
+            }
+            _mesh.filter = null;
+        }
+    }
+
+    public function get mesh():AbsMesh {
+        return _mesh;
+    }
 
     public function Draw(geometry:GraphGeom = null) {
         super();
@@ -89,24 +128,13 @@ public class Draw extends Sprite {
         if (useInvalidation) {
             if (_invalidating) return;
             _invalidating = true;
-            Starling.juggler.delayCall(onInvalidation, 0);
+            Starling.juggler.delayCall(validate, 0);
         } else {
-            _invalidating = false;
             validate();
         }
     }
 
-    private function onInvalidation():void {
-        _invalidating = false;
-        validate();
-    }
-
     public function validate():Draw {
-        if (_invalidating) {
-            Starling.juggler.removeDelayedCalls(onInvalidation);
-        }
-        _invalidating = false;
-
         // TODO: readjust the polygon to keep it open.
         if (currentPath) {
             finishPoly();
@@ -114,11 +142,16 @@ public class Draw extends Sprite {
         if (currentPath) {
             drawShape(currentPath);
         }
-
         // skip in cloneed instance.
         _geom.calculate();
         renderMesh();
-        return this ;
+
+        if (_invalidating) {
+            Starling.juggler.removeDelayedCalls(validate);
+        }
+        _invalidating = false;
+
+        return this;
     }
 
     /**
@@ -228,9 +261,10 @@ public class Draw extends Sprite {
             _lineStyle.color = color;
             _lineStyle.alpha = alpha;
             _lineStyle.matrix = matrix;
-            _lineStyle.visible = visible;
+            _lineStyle.visible = true;
             _lineStyle.joint = joinType;
             _lineStyle.caps = lineCap;
+            _lineStyle.miterLimit = miterLimit;
         }
         return this;
     }
@@ -330,7 +364,7 @@ public class Draw extends Sprite {
     public function endFill():Draw {
         finishPoly();
         _fillStyle.reset();
-        invalidate();
+//        invalidate();
         return this;
     }
 
@@ -611,7 +645,7 @@ public class Draw extends Sprite {
                 trace("[Draw] drawGraphicsData() unsupported command:", clase, JSON.stringify(gd));
             }
         }
-        return this ;
+        return this;
     }
 
     public function drawPath(commands:Vector.<int>, data:Vector.<Number>):Draw {
@@ -678,8 +712,8 @@ public class Draw extends Sprite {
         } else {
             currentPath = new Poly();
             currentPath.closed = false;
+            invalidate();
         }
-        invalidate();
     }
 
     private function finishPoly():void {
@@ -691,10 +725,10 @@ public class Draw extends Sprite {
             } else {
                 // TODO: return to pool?
                 currentPath.reset();
+                invalidate();
             }
         }
     }
-
 
     protected function drawShape(shape:AbsShape):Draw {
         if (!_holeMode) {
@@ -702,7 +736,7 @@ public class Draw extends Sprite {
         } else {
             _geom.drawHole(shape, _matrix);
         }
-//        invalidate();
+        invalidate();
         return this;
     }
 
@@ -785,6 +819,83 @@ public class Draw extends Sprite {
     public function clone():Draw {
         this.finishPoly();
         return new Draw(_geom);
+    }
+
+    private static const _matrix:Matrix = new Matrix();
+    private static const _rect:Rectangle = new Rectangle();
+
+    private static var tmpContainer:Sprite = new Sprite();
+    private static var _padding:Padding = new Padding();
+    private static var _imageMap:Dictionary;
+
+    public static function getImage(instance:Draw, copyTransform:Boolean, compressFormat:Boolean = false):Image {
+
+        if (!_imageMap) _imageMap = new Dictionary();
+        // try to draw it
+        var doc:DisplayObjectContainer = instance.parent;
+
+        tmpContainer.addChild(instance);
+        Starling.current.stage.addChild(tmpContainer);
+
+        // offset if padding...
+        var padd:Padding = _padding;
+        if (instance.filter) {
+            padd = instance.filter.padding;
+        }
+
+        // store previous matrix.
+        _matrix.identity();
+        var m:Matrix = instance.transformationMatrix.clone();
+        instance.transformationMatrix = _matrix;
+
+//        instance.rotation = 0;
+//        instance.x = instance.y = 0;
+
+        var bb:Rectangle = instance.getBounds(instance.parent, _rect);
+//        instance.pivotX = instance.pivotY = 0;
+
+        tmpContainer.x = padd.left;
+        tmpContainer.y = padd.top;
+
+        const format:String = compressFormat ? 'bgraPacked4444' : 'bgra';
+        var rt:RenderTexture = new RenderTexture(Math.ceil(bb.width + padd.horizontal), Math.ceil(bb.height + padd.vertical), true, -1, format);
+//        rt.clear(0xff0000, .25);
+        rt.draw(tmpContainer, null, 1, 8);
+
+        tmpContainer.removeChildren();
+        tmpContainer.removeFromParent();
+
+        if (doc) {
+            doc.addChild(instance);
+        }
+
+        instance.transformationMatrix = m;
+
+        var img:Image = new Image(rt);
+
+        _imageMap[img] = {w: bb.width, h: bb.height, padd: padd};
+
+        if (copyTransform) {
+            img.transformationMatrix = m;
+        }
+        return img;
+    }
+
+    public static function getImgData(img:Image):Object {
+        if (!_imageMap) return null;
+        return _imageMap[img];
+    }
+
+    public static function getTexture(instance:Draw, compressFormat:Boolean = true):RenderTexture {
+        const m:Matrix = Draw._matrix;
+        const bounds:Rectangle = Draw._rect;
+        m.identity();
+        instance.getBounds(instance, bounds);
+        m.translate(-bounds.x, -bounds.y);
+        const format:String = compressFormat ? 'bgraPacked4444' : 'bgra';
+        var texture:RenderTexture = new RenderTexture(Math.ceil(bounds.width), Math.ceil(bounds.height), true, -1, format);
+        texture.draw(instance, m, 1, 2);
+        return texture;
     }
 }
 }

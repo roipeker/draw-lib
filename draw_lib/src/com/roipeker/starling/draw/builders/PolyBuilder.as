@@ -40,7 +40,7 @@ public class PolyBuilder extends AbsShapeBuilder {
                 }
             }
 
-            var triangles:Array = Earcut.earcut(points, holes, 2);
+            var triangles:Array = Earcut.earcut(points, holes );
             if (!triangles) return;
 
             const vertPos:int = verts.length >> 1;

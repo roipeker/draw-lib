@@ -22,7 +22,7 @@ public class StarlingRoot extends Sprite {
 
         // just uncomment 1 line at a time to test.
 
-        addChild(new DemoPixiSimple());
+//        addChild(new DemoPixiSimple());
 //        addChild(new DemoPixiAdvanced());
 //        addChild(new DemoPixiDynamic());
 //        addChild(new DemoAnimatedArc());

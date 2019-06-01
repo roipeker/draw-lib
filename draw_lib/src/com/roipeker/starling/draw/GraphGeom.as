@@ -56,11 +56,17 @@ public class GraphGeom {
     }
 
     public function calculate():void {
-        if( _dirty == _cacheDirty ) return ;
-        _cacheDirty = _dirty ;
+        if (_dirty == _cacheDirty) return;
+
+        _cacheDirty = _dirty;
         const shapes:Array = _shapesData;
         var currentColor:uint = 0xFFFFFF;
         var currentAlpha:Number = 1;
+
+        this.points.length = 0;
+        this.indices.length = 0;
+        this.colors.length = 0;
+        this.gradients.length = 0;
 
         for (var i:int = 0, ilen:int = shapes.length; i < ilen; i++) {
             const shapeData:GraphData = _shapesData[i];
@@ -115,13 +121,24 @@ public class GraphGeom {
     }
 
     private function transformPoints(points:Array, matrix:Matrix):void {
-        var x:Number, y:Number, idx:int;
+        /*var x:Number, y:Number, idx:int;
         for (var i:int = 0, len:uint = points.length >> 1; i < len; i++) {
             idx = i * 2;
             x = points[idx];
             y = points[idx + 1];
             points[idx] = (matrix.a * x) + (matrix.c * y) + matrix.tx;
             points[idx + 1] = (matrix.b * x) + (matrix.d * y) + matrix.ty;
+            /!*points[idx] += matrix.tx;
+            points[idx + 1] += matrix.ty;*!/
+        }*/
+
+        const len:int = points.length / 2;
+        for (var i:int = 0; i < len; i++) {
+            const x:Number = points[(i * 2)];
+            const y:Number = points[(i * 2) + 1];
+
+            points[(i * 2)] = (matrix.a * x) + (matrix.c * y) + matrix.tx;
+            points[(i * 2) + 1] = (matrix.b * x) + (matrix.d * y) + matrix.ty;
         }
     }
 
@@ -155,7 +172,7 @@ public class GraphGeom {
         output.indices = indices.concat();
         output.colors = colors.concat();
         output.gradients = gradients.concat();
-        return output ;
+        return output;
     }
 
     public function dispose():void {
