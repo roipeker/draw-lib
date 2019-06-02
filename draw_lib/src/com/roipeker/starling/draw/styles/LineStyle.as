@@ -28,6 +28,9 @@ public class LineStyle extends FillStyle {
 
     override public function clone():FillStyle {
         const fill:LineStyle = new LineStyle();
+        fill.texture = texture;
+        fill.textureRepeat = textureRepeat;
+        fill.matrix = matrix;
         fill.width = width ;
         fill.alignment = alignment;
         fill.joint= joint;
@@ -45,15 +48,14 @@ public class LineStyle extends FillStyle {
         color = 0x000000;
         width = 0;
         alignment = 0.5;
-
         miterLimit = 10;
         joint = JointStyle.MITER;
         caps = CapsStyle.SQUARE;
     }
 
     override public function toString():String {
-        return StringUtil.format("[LineStyle width={0}, alignment={1}, color=0x{2}, alpha={3}, visible={4}, joint={5}, caps={6}, gradient={7}]",
-                width, alignment, color.toString(16).toUpperCase(), alpha, visible, joint, caps, gradient);
+        return StringUtil.format("[LineStyle width={0}, alignment={1}, color=0x{2}, alpha={3}, visible={4}, joint={5}, caps={6}, gradient={7}, texture={8}]",
+                width, alignment, color.toString(16).toUpperCase(), alpha, visible, joint, caps, gradient, texture);
     }
 }
 }

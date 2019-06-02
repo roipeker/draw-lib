@@ -33,7 +33,6 @@ import flash.geom.Point;
 import flash.geom.Rectangle;
 import flash.utils.ByteArray;
 import flash.utils.Dictionary;
-import flash.utils.getTimer;
 
 import starling.core.Starling;
 import starling.display.DisplayObjectContainer;
@@ -51,7 +50,7 @@ import starling.utils.Padding;
 
 public class Draw extends Sprite {
 
-    public static const VERSION:String = '1.0.1';
+    public static const VERSION:String = '1.0.2';
 
     private var _mesh:AbsMesh;
     private var _geom:GraphGeom;
@@ -90,7 +89,7 @@ public class Draw extends Sprite {
             _mesh.filter = _cacheFilter;
 //            _cacheFilter.cache();
         } else {
-            if( _cacheFilter ) {
+            if (_cacheFilter) {
                 _cacheFilter.clearCache();
             }
             _mesh.filter = null;
@@ -187,6 +186,7 @@ public class Draw extends Sprite {
         const colors:Array = _geom.colors;
         const gradients:Array = _geom.gradients;
         const verts:Array = _geom.points;
+        const uvs:Array = _geom.uvs;
         var i:int, j:int = 0, len:int, rawData:ByteArray;
 
 
@@ -200,15 +200,17 @@ public class Draw extends Sprite {
         const positionOffset:int = vd.format.getOffset('position');
         const vertexSize:int = vd.vertexSize;
 
+        trace( _geom.textureRepeat, _geom.texture )
+
         len = verts.length;
         for (i = 0; i < len; i += 2) {
             rawData.position = j * vertexSize + positionOffset;
             rawData.writeFloat(verts[i]);
             rawData.writeFloat(verts[i + 1]);
-            /*vd.setPoint(j, 'position', verts[i], verts[i + 1]);
-            if (tx) {
+//            vd.setPoint(j, 'position', verts[i], verts[i + 1]);
+            if (_geom.texture) {
                 vd.setPoint(j, 'texCoords', uvs[i], uvs[i + 1]);
-            }*/
+            }
             j++;
         }
 
@@ -235,12 +237,15 @@ public class Draw extends Sprite {
             numInd += 3;*/
             id.addTriangle(indices[i], indices[i + 1], indices[i + 2]);
         }
+        _mesh.textureRepeat = _geom.textureRepeat;
+        _mesh.texture = _geom.texture;
 
+        trace(_mesh.textureRepeat);
         dispatchEventWith("render");
         _mesh.setRequiresRedraw();
     }
 
-    private function lineTextureStyle(width:Number = 0, texture:Texture = null, color:uint = 0xFFFFFF, alpha:Number = 1,
+    public function lineTextureStyle(width:Number = 0, texture:Texture = null, textureRepeat:Boolean=false, color:uint = 0xFFFFFF, alpha:Number = 1,
                                       matrix:Matrix = null,
                                       aligment:Number = 0.5, joinType:String = JointStyle.MITER, lineCap:String = CapsStyle.SQUARE,
                                       miterLimit:Number = 10):Draw {
@@ -253,8 +258,9 @@ public class Draw extends Sprite {
         } else {
             if (matrix) {
                 matrix = matrix.clone();
-                matrix.invert();
             }
+            _lineStyle.texture = texture ;
+            _lineStyle.textureRepeat = textureRepeat ;
             _lineStyle.gradient.visible = false;
             _lineStyle.width = width;
             _lineStyle.alignment = aligment;
@@ -269,7 +275,26 @@ public class Draw extends Sprite {
         return this;
     }
 
-    private function beginTextureFill(texture:Texture = null, color:uint = 0xffffff, alpha:Number = 1, matrix:Matrix = null):Draw {
+    /**
+     * begin drawing fill with a Texture.
+     *
+     * NOTE: As a Draw instance uses only one Mesh, the texture will be applied to the entire geometry.
+     * Textures must be a power of 2 for accurate repeatMode, (Stage3D limitation apparently).
+     * When u generate the texture, mipmapping is required!
+     *
+     * Currently no support for SubTextures (TextureAtlas)
+     *
+     * TODO: implement multiple internal Meshes to assign textures.
+     * TODO: implement something similar to Image::tileGrid for repeatMode.
+     *
+     * @param texture
+     * @param color
+     * @param alpha
+     * @param matrix
+     * @param textureRepeat     For proper repeatTexture, provide a pow2 texture.
+     * @return
+     */
+    public function beginTextureFill(texture:Texture = null, color:uint = 0xffffff, alpha:Number = 1, matrix:Matrix = null, textureRepeat:Boolean=false):Draw {
         if (currentPath) {
             startPoly();
         }
@@ -284,7 +309,8 @@ public class Draw extends Sprite {
             _fillStyle.gradient.visible = false;
             _fillStyle.color = color;
             _fillStyle.alpha = alpha;
-//            _fillStyle.texture = texture;
+            _fillStyle.texture = texture;
+            _fillStyle.textureRepeat = textureRepeat;
             _fillStyle.matrix = matrix;
             _fillStyle.visible = visible;
         }
@@ -313,7 +339,7 @@ public class Draw extends Sprite {
     public function lineStyle(width:Number = 0, color:uint = 0xFFFFFF, alpha:Number = 1,
                               alignment:Number = 0.5, joinType:String = JointStyle.MITER, lineCap:String = CapsStyle.SQUARE,
                               miterLimit:Number = 10):Draw {
-        return lineTextureStyle(width, null, color, alpha, null, alignment, joinType, lineCap, miterLimit);
+        return lineTextureStyle(width, null,false, color, alpha, null, alignment, joinType, lineCap, miterLimit);
     }
 
     public function beginFill(color:uint = 0xFFFFFF, alpha:Number = 1):Draw {

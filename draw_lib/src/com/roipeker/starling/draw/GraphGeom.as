@@ -17,6 +17,8 @@ import com.roipeker.starling.draw.utils.GraphUtils;
 
 import flash.geom.Matrix;
 
+import starling.textures.Texture;
+
 public class GraphGeom {
 
     private var _shapesData:Array;
@@ -28,14 +30,18 @@ public class GraphGeom {
     public var colors:Array;
     public var gradients:Array;
 
-//    public var texture:Texture ;
-//    public var uvs:Array ;
+    // todo: remove this "globals" props when supporting batching or/and multiple Meshes rendering.
+    public var texture:Texture;
+    public var textureRepeat:Boolean;
+
+    public var uvs:Array;
 
     public function GraphGeom() {
         points = [];
         indices = [];
         colors = [];
         gradients = [];
+        uvs = [];
         _shapesData = [];
     }
 
@@ -63,6 +69,10 @@ public class GraphGeom {
         var currentColor:uint = 0xFFFFFF;
         var currentAlpha:Number = 1;
 
+        texture = null;
+        textureRepeat = false ;
+
+        this.uvs.length = 0;
         this.points.length = 0;
         this.indices.length = 0;
         this.colors.length = 0;
@@ -116,8 +126,32 @@ public class GraphGeom {
                             currentAlpha
                     );
                 }
+                texture = style.texture ;
+                textureRepeat = style.textureRepeat ;
+                if( style.texture ){
+                    addUvs( points, uvs, style.texture, start, size, style.matrix);
+                }
             }
         }
+    }
+
+    private function addUvs(verts:Array, uvs:Array, texture:Texture, start:int, size:int, matrix:Matrix):void {
+        var index:int = 0;
+        while (index < size)
+        {
+            var x:Number = verts[(start + index) * 2];
+            var y:Number = verts[((start + index) * 2) + 1];
+            if (matrix)
+            {
+                const nx:Number = (matrix.a * x) + (matrix.c * y) + matrix.tx;
+                y = (matrix.b * x) + (matrix.d * y) + matrix.ty;
+                x = nx;
+            }
+            index++;
+            uvs.push(x / texture.width, y / texture.height);
+        }
+        // Todo: adjust UVS for textureAtlases.
+
     }
 
     private function transformPoints(points:Array, matrix:Matrix):void {
@@ -157,6 +191,8 @@ public class GraphGeom {
             // TODO: return shapesData objects to pool.
             _dirty++;
             _shapesData.length = 0;
+            uvs.length = 0;
+            texture = null;
             points.length = 0;
             indices.length = 0;
             colors.length = 0;
@@ -179,6 +215,7 @@ public class GraphGeom {
         clear();
         _shapesData = null;
         points = null;
+        uvs = null ;
         indices = null;
         colors = null;
         gradients = null;

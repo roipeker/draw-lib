@@ -33,6 +33,7 @@ public class StarlingRoot extends Sprite {
 //        addChild(new DemoPieChart());
 //        addChild(new DemoGraphicsData());
 //        addChild(new DemoLineStyles());
+        addChild(new DemoTextureFill());
     }
 
 }
