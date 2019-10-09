@@ -200,8 +200,6 @@ public class Draw extends Sprite {
         const positionOffset:int = vd.format.getOffset('position');
         const vertexSize:int = vd.vertexSize;
 
-        trace( _geom.textureRepeat, _geom.texture )
-
         len = verts.length;
         for (i = 0; i < len; i += 2) {
             rawData.position = j * vertexSize + positionOffset;

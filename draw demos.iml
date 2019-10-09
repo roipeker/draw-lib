@@ -12,6 +12,9 @@
               <dependency linkage="Merged" />
             </entry>
             <entry library-id="57722426-401c-4ba9-8140-83f0271987aa">
+              <dependency linkage="Test" />
+            </entry>
+            <entry library-name="Starling github" library-level="application">
               <dependency linkage="Merged" />
             </entry>
           </entries>
@@ -55,5 +58,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="Starling github" level="application" />
   </component>
 </module>

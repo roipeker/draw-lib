@@ -70,7 +70,7 @@ public class GraphGeom {
         var currentAlpha:Number = 1;
 
         texture = null;
-        textureRepeat = false ;
+        textureRepeat = false;
 
         this.uvs.length = 0;
         this.points.length = 0;
@@ -108,8 +108,8 @@ public class GraphGeom {
                 } else {
                     GraphUtils.resolveLine(shapeData, this);
                 }
-
                 const size:int = (points.length >> 1) - start;
+
                 if (style.gradient && style.gradient.visible) {
                     gradients.push(
                             start,
@@ -126,10 +126,10 @@ public class GraphGeom {
                             currentAlpha
                     );
                 }
-                texture = style.texture ;
-                textureRepeat = style.textureRepeat ;
-                if( style.texture ){
-                    addUvs( points, uvs, style.texture, start, size, style.matrix);
+                texture = style.texture;
+                textureRepeat = style.textureRepeat;
+                if (style.texture) {
+                    addUvs(points, uvs, style.texture, start, size, style.matrix);
                 }
             }
         }
@@ -137,12 +137,10 @@ public class GraphGeom {
 
     private function addUvs(verts:Array, uvs:Array, texture:Texture, start:int, size:int, matrix:Matrix):void {
         var index:int = 0;
-        while (index < size)
-        {
+        while (index < size) {
             var x:Number = verts[(start + index) * 2];
             var y:Number = verts[((start + index) * 2) + 1];
-            if (matrix)
-            {
+            if (matrix) {
                 const nx:Number = (matrix.a * x) + (matrix.c * y) + matrix.tx;
                 y = (matrix.b * x) + (matrix.d * y) + matrix.ty;
                 x = nx;
@@ -150,8 +148,35 @@ public class GraphGeom {
             index++;
             uvs.push(x / texture.width, y / texture.height);
         }
-        // Todo: adjust UVS for textureAtlases.
 
+        // TODO: adjust UVS for textureAtlases.
+        // check if it works.
+        trace(texture.frame);
+        if ( texture.frame && ( texture.frame.width < texture.width || texture.frame.height < texture.height )) {
+            adjustUvs(uvs, texture, uvs.length, size);
+        }
+    }
+
+    private function adjustUvs(uvs:Array, texture:Texture, start:int, size:int) {
+        const eps:Number = 1e-6;
+        const finish:int = start + (size * 2);
+        const frame:flash.geom.Rectangle = texture.frame;
+        const scaleX:Number = frame.width / texture.width;
+        const scaleY:Number = frame.height / texture.height;
+        var offsetX:Number = frame.x / frame.width;
+        var offsetY:Number = frame.y / frame.height;
+        var minX:int = Math.floor(uvs[start] + eps);
+        var minY:int = Math.floor(uvs[start + 1] + eps);
+        for (var i:int = start + 2; i < finish; i += 2) {
+            minX = Math.min(minX, Math.floor(uvs[i] + eps));
+            minY = Math.min(minY, Math.floor(uvs[i + 1] + eps));
+        }
+        offsetX -= minX;
+        offsetY -= minY;
+        for (i = start; i < finish; i += 2) {
+            uvs[i] = (uvs[i] + offsetX) * scaleX;
+            uvs[i + 1] = (uvs[i + 1] + offsetY) * scaleY;
+        }
     }
 
     private function transformPoints(points:Array, matrix:Matrix):void {
@@ -215,7 +240,7 @@ public class GraphGeom {
         clear();
         _shapesData = null;
         points = null;
-        uvs = null ;
+        uvs = null;
         indices = null;
         colors = null;
         gradients = null;
